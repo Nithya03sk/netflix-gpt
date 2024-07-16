@@ -19,3 +19,9 @@ The following questions will help Jest to create a suitable configuration for yo
 √ Automatically clear mock calls, instances and results before every test? ... yes
 
 instal jsdom library
+
+* RAFCE is a shortcut for creates a boiler plate for jsx component. REACT ARROW FUNCTION COMPONENT EXPORT
+
+* npm i -D react-router-dom
+    - createBrowseRouter give path n element
+    - RouterProvider pass appRouter
