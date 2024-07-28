@@ -25,3 +25,23 @@ instal jsdom library
 * npm i -D react-router-dom
     - createBrowseRouter give path n element
     - RouterProvider pass appRouter
+
+* for validation we used useRef hook, create a const and assign it to input field to fetch a value of input field.
+
+* For authentication we are using firebase
+
+* Steps for deploy
+    1. Install firebase CLI - npm install -g firebase-tools
+    2. Firebase login - firebase login
+    3. intialize firebase - firebase init, then select hosting
+    4. Deploy command - firebase deploy
+
+* write sign up and sign in logic (used firebase --> web page documentation)
+
+* install redux to store users
+    npm i -D @reduxis/toolkit
+    npm i react-redux
+
+* first create store i.e,. appStore, create slice userSlice.
+* put sliceReducer in to store.
+* put store inside root file of your project i.e., App.js using Provider.
