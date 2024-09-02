@@ -1,14 +1,32 @@
-import { signOut } from 'firebase/auth';
-import React, { useState } from 'react'
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect } from 'react'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice'
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // whenever user sign in , sign up this will be triggered and also updating store.
+  useEffect( () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        const {uid, email, displayName} = user;
+        dispatch(addUser(({uid: uid, email: email, displayName: displayName})));
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    })
+  }, [])
 
 const handleSignOut = () => {
   signOut(auth).then(() => {
-    navigate("/");
     // Sign-out successful.
   }).catch((error) => {
     navigate("/error");

@@ -35,6 +35,7 @@ instal jsdom library
     2. Firebase login - firebase login
     3. intialize firebase - firebase init, then select hosting
     4. Deploy command - firebase deploy
+ *** hosted url: https://netflixgptnith.web.app
 
 * write sign up and sign in logic (used firebase --> web page documentation)
 

@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './Login'
 import Browse from './Browse'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
-import { addUser, removeUser } from '../utils/userSlice'
-import { auth } from '../utils/firebase'
 
 const Body = () => {
-  const dispatch = useDispatch();
     const appRouter = createBrowserRouter([
         {
           path: "/",
@@ -19,19 +14,7 @@ const Body = () => {
           element: <Browse/>
         }
       ])
-    // whenever user sign in , sign up this will be triggered and also updating store.
-    useEffect( () => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // User is signed in, see docs for a list of available properties
-          const {uid, email, displayName} = user;
-          dispatch(addUser(({uid: uid, email: email, displayName: displayName})));
-        } else {
-          // User is signed out
-          dispatch(removeUser());
-        }
-      })
-    }, [])
+    
   return (
     <div>
         <RouterProvider router={appRouter} />
